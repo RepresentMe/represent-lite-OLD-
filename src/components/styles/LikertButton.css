@@ -1,0 +1,28 @@
+.LikertButton {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    display: inline-block;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 1);
+    transition: all 0.2s ease-in-out;
+}
+
+@media (max-width:768px) {
+    /* Anything larger than 960px */
+    .LikertButton {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.LikertButton:hover {
+    cursor: pointer;
+    cursor: hand;
+    opacity: 0.8;
+}
+
+.LikertButton:active {
+    box-shadow: 0 0 50px rgba(81, 203, 238, 1);
+}

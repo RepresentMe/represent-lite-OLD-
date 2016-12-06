@@ -1,0 +1,111 @@
+.Notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 150;
+  background: linear-gradient(306deg, rgba(67,206,162,1) 0%, rgba(24,90,157,1) 100%);
+  visibility: visible;
+}
+
+.NotificationBody  .title {
+  margin: 0 0 5px 0;
+  padding: 0;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.NotificationBody {
+  width: 100%;
+  animation: NotificationInset 0.5s ease-in;
+  animation-iteration-count: 1;
+}
+
+.Notification .Inset {
+  opacity: 1;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.Notification .Inset.full {
+  width: 100%;
+  height: calc(80vh - 10px);
+  overflow: scroll;
+  text-align: left;
+}
+
+.Notification button {
+  background: linear-gradient(306deg, rgba(67,206,162,0.8) 0%, rgba(24,90,157,0.8) 100%);
+  color: white;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.Notification button.closeBtn {
+  background: linear-gradient(306deg, rgba(140, 67, 206, 0.8) 0%, rgba(157, 24, 24, 0.8) 100%);
+}
+
+.Notification.closing {
+  animation: NotificationBgClose 1s ease-out;
+  animation-iteration-count: 1;
+}
+
+.Notification.closing .NotificationBody {
+  animation: NotificationInsetClose 1s ease-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes NotificationInset {
+
+  0% {
+    margin-top: -200vh;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+@keyframes NotificationBg {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes NotificationInsetClose {
+
+  100% {
+    margin-top: -200vh;
+  }
+
+  80% {
+    margin-top: -200vh;
+  }
+
+  20% {
+    margin-top: 20px;
+  }
+
+  0% {
+    margin-top: 0;
+  }
+}
+
+@keyframes NotificationBgClose {
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "represent-lite-react",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "css-loader": "^0.26.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.13.0",
+    "react-scripts": "0.7.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1"
+  },
+  "dependencies": {
+    "antiscroll": "^1.0.0",
+    "email-validator": "^1.0.7",
+    "jquery": "^3.1.1",
+    "material-ui": "^0.16.4",
+    "react": "^15.3.2",
+    "react-color": "^2.4.0",
+    "react-dom": "^15.3.2",
+    "react-flip-move": "^2.6.10",
+    "react-ga": "^2.1.2",
+    "react-google-autocomplete": "^1.0.7",
+    "react-google-places-suggest": "^1.0.1",
+    "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
+    "react-scroll": "^1.4.4",
+    "react-swipeable": "^3.7.0",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-waypoint": "^4.0.2",
+    "redux": "^3.6.0",
+    "spawn-sync": "^1.0.15",
+    "tcomb-form": "^0.9.10",
+    "viewport-units-buggyfill": "^0.6.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

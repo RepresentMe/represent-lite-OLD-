@@ -1,0 +1,35 @@
+.CompareUsers .text-to-right {
+    text-align: right;
+}
+
+.CompareUsers .title {
+    text-align: center;
+}
+
+.CompareUsers .mainElem {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.CompareUsers .userName {
+    text-align: left;
+}
+
+.CompareUsers .userImage {
+    width: 50px;
+    border-radius: 100%;
+}
+
+.CompareUsers .overlap {
+    display: inline-block;
+    margin: 0 10px;
+    min-width: 30px;
+    text-align: center;
+    color: #818a91;
+}
+
+.CompareUsers .agreementPercentage {
+    display: inline-block;
+    min-width: 50px;
+    font-weight: bold;
+}

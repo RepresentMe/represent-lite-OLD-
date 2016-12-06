@@ -1,0 +1,56 @@
+.LikertButtons .likertButtonContainer {
+  width: 20%;
+  text-align: center;
+  float: left;
+}
+
+@media (min-width:960px)  {
+
+  /* Anything larger than 960px */
+
+  .LikertButtons {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+}
+
+.LikertButtons {
+  overflow: hidden;
+}
+
+.LikertButtons.answered > .likertButtonContainer {
+  filter: grayscale(0.8);
+}
+
+.LikertButtons.answered > .likertButtonContainer.selected {
+  filter: none;
+}
+
+.Question.answered .likertButtonContainer {
+  /*filter: grayscale(100%);*/
+  /*opacity: 0.2;*/
+
+}
+
+.Question.answered .likertButtonContainer.selected {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.LikertButtons .likertButtonContainer.updating div {
+  animation-name: pulsate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes pulsate {
+    0% {opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {opacity: 0.0;}
+}

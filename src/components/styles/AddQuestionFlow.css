@@ -1,0 +1,33 @@
+.AddQuestionFlow input:focus, input:focus, textarea:focus {
+    box-shadow: 0 0 0 !important;
+    border: 0 !important;
+}
+
+.AddQuestionFlow .primaryTagSel {
+    margin: 20px 0 0 0;
+}
+
+.AddQuestionFlow .searchTags {
+    margin: 0 0 35px;
+}
+
+.AddQuestionFlow .searchTags label {
+    top: 30px !important
+}
+
+.AddQuestionFlow .searchTags .tags {
+    display:inline-block;
+    margin-top:10px;
+}
+
+.AddQuestionFlow .searchTags .tag {
+    display: inline-block;
+    padding: 4px 9px;
+    margin: 4px 0px;
+    background-color: #eef1ee;
+    border-radius: 3px;
+}
+
+.AddQuestionFlow .searchTags .tag:not(:first-child) {
+    margin-left: 11px
+}

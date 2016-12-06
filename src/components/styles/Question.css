@@ -1,0 +1,44 @@
+.Question {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 600px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Question .title {
+    margin: 1rem;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    min-height: 150px;
+}
+
+.moreActions button {
+    height: 20px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    color: #ccc !important;
+}
+
+.moreActions button svg {
+    color: rgba(0, 0, 0, 0.3) !important;
+}
+
+@media (max-width:600px) {
+    /* Anything larger than 768 */
+    .Question {
+        margin: 0 10px;
+    }
+    .Question .title {
+        font-size: 20px;
+        margin: 0.2rem;
+    }
+}
+
+@media (min-width:600px) {
+    /* Anything smaller than 768 */
+    .Question {
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://represent.me/assets/images/logos/favicon.png">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <title>Represent</title>
+</head>
+<body>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1499361770335561',
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div id="asd"></div>
+    <div><img src="https://represent.me/assets/img/logos/logoh_noborder.png" /></div>
+    <button onclick="fbLogin()">Facebook</button>
+
+    <div>
+        Sign in:
+        <div><input type="text" id="signinUsername" placeholder="username"></div>
+        <div><input type="password" id="signinPassword" placeholder="password"></div>
+        <div><button onclick="signIn()">Sign In</button></div>
+    </div>
+    <hr>
+    <div>
+        Sign up:
+        <div><input type="text" id="signupEmail" placeholder="email"></div>
+        <div><input type="password" id="signupPassword" placeholder="password"></div>
+        <div><input type="text" id="signupUsername" placeholder="username"></div>
+        <div><button onclick="signUp()">Sign up</button></div>
+    </div>
+
+    <script>
+        var access_token = null;
+        if(localStorage) {
+            access_token = localStorage.getItem('auth_token');
+            if(access_token) redirect(access_token);
+        }
+
+        function redirect(access_token) {
+            var redirectUrl = getParameterByName('redirect_uri');
+            redirectUrl += '&authorization_code=Token '+access_token;
+            document.getElementById('asd').innerHTML = redirectUrl;
+            window.location.href = redirectUrl;
+        }
+        function fbLogin() {
+            FB.login(function(response){
+                var authToken = response.authResponse.accessToken;
+                $.post("https://api.represent.me/auth-yeti/",
+                    {
+                        provider: 'facebook',
+                        access_token: authToken
+                    },
+                    function(data, status){
+//                            $http.defaults.headers.common.Authorization = 'Token ' + data.auth_token;
+
+//                            if (localStorage) {
+//                                localStorage.setItem('auth_token', data.auth_token);
+//                            }
+
+                        redirect(data.auth_token);
+                    });
+
+            });
+        }
+
+        function signIn() {
+
+            $.post("https://api.represent.me/auth/login/",
+                {
+                    username: document.getElementById('signinUsername').value,
+                    password: document.getElementById('signinPassword').value
+                },
+                function(data, status){
+                    redirect(data.auth_token);
+                });
+        }
+
+        function signUp() {
+
+            $.post("https://api.represent.me/auth/register/",
+                {
+                    username: document.getElementById('signupUsername').value,
+                    password: document.getElementById('signupPassword').value,
+                    email: document.getElementById('signupEmail').value
+                },
+                function(data, status){
+                    redirect(data.auth_token);
+                });
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+    </script>
+</body>
+</html>

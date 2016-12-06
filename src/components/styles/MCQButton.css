@@ -1,0 +1,25 @@
+.MCQButton {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #9b9b9b;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.MCQButton.selected {
+  border-color: #369573;
+  color: #369573;
+}
+
+.MCQButton:hover {
+  cursor: pointer; cursor: hand;
+  border-color: rgba(81, 203, 238, 1);
+  box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+}
+
+.MCQButton:active {
+  box-shadow: 0 0 50px rgba(81, 203, 238, 1);
+}

@@ -1,0 +1,49 @@
+
+.Toggle {
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid black;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 8px;
+  margin-bottom: 0px;
+  padding: 5px;
+  font-size: 0.8rem;
+  vertical-align: top;
+  box-sizing: border-box;
+  height: 26px;
+}
+
+.Toggle.large {
+  height: 38px;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.Toggle.False {
+  opacity: 0.3;
+}
+
+.Toggle:hover {
+  opacity: 1;
+  cursor: pointer; cursor: hand;
+  box-shadow: 0 0 10px;
+}
+
+.ToggleText {
+  float: left;
+  color: #000;
+}
+
+.ToggleIcon {
+    float: left;
+    height: 100%;
+    padding-left: 4px;
+    margin-left: 4px;
+    border-left: 1px solid black;
+    box-sizing: border-box;
+}
+
+.ToggleIcon img {
+  height: 100%;
+}
