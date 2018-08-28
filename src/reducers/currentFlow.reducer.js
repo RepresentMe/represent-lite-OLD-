@@ -26,10 +26,9 @@ const currentFlowReducer = function(state = initialState, action) {
         imageUrl: action.imageUrl, // image of group, collection etc
         slug: action.slug // image of group, collection etc
       });
-
+    default:
+      return state;
   }
-
-  return state;
 
 };
 

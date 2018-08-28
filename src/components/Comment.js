@@ -33,6 +33,9 @@ class Comment extends Component {
       case 'suggestion':
         subtypeColour = colour.solution;
         break;
+      default:
+        throw new Error("unrecognised comment subtype " +
+                        this.props.commentObj.subtype);
     }
 
     let vote = null;
@@ -54,6 +57,9 @@ class Comment extends Component {
         case 5:
           vote = 'Strongly Agree';
           break;
+      default:
+        throw new Error("unrecognised comment vote " +
+                        this.props.commentObj.vote[0].value);
       }
     }
 

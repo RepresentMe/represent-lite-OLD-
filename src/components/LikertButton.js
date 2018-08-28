@@ -28,7 +28,8 @@ class LikertButton extends Component {
       case 5:
         correctColour = LikertColour5;
         break;
-
+      default:
+        throw new Error("invalid colour " + correctColour);
     }
 
     return (

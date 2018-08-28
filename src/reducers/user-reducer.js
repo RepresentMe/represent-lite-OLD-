@@ -12,9 +12,10 @@ const userReducer = function(state = initialState, action) {
       return Object.assign({}, state, { curUserProfile: null });
     case 'updateCurUserProfile':
       return Object.assign({}, state, { curUserProfile: action.userProfile });
+    default:
+      return state;
   }
 
-  return state;
 };
 
 export default userReducer;

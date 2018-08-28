@@ -57,6 +57,9 @@ class Comments extends Component {
                 case 'suggestion':
                   if(!this.state.filterSolutions) return null;
                   break;
+                default:
+                  throw new Error("unrecognised comment subtype " +
+                                  comment.subtype);
               }
               return (<Comment onReply={this.onReply} key={i} commentObj={comment} Represent={this.props.Represent} />)
             }.bind(this))
@@ -166,6 +169,8 @@ class Comments extends Component {
       case 'solutions':
         this.setState({filterSolutions: !this.state.filterSolutions});
         break;
+       default:
+        throw new Error("unrecognised filter " + filter);
     }
   }
 
