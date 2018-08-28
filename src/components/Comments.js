@@ -4,7 +4,6 @@ import Toggle from './Toggle.js';
 import './styles/Comments.css';
 import FlipMove from 'react-flip-move';
 import $ from 'jquery';
-import {Element, scroller} from 'react-scroll';
 // import './styles/Comm.css';
 
 class Comments extends Component {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles/Notification.css';
 import Page from './Page';
 import Logo from './images/represent_logo_cube.png';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class Notification extends Component {
 

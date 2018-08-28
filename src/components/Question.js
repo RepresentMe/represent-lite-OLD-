@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 
 import LikertButtons from './LikertButtons';
 import MCQButtons from './MCQButtons';
-import QuestionResultsBars from './QuestionResultsBars';
 import $ from 'jquery';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-import FlatButton from 'material-ui/FlatButton';
+//import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import './styles/Question.css';
 
 

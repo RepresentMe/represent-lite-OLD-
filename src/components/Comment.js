@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import LikertButton from './LikertButton';
+//import LikertButton from './LikertButton';
 import CommentVote from './CommentVote';
 import './styles/LikertButtons.css';
 import ProfilePlaceholder from './images/profile_placeholder.png';
-import IconReply from './images/icon-reply.png';
+//import IconReply from './images/icon-reply.png';
 
 class Comment extends Component {
   constructor(props) {
@@ -36,7 +36,6 @@ class Comment extends Component {
     }
 
     let vote = null;
-    let voteColour = null;
 
     if(this.props.commentObj.vote.length > 0) {
       switch(this.props.commentObj.vote[0].value) {

@@ -8,7 +8,6 @@ import {Element, scroller} from 'react-scroll';
 import LoadingScreen from './LoadingScreen';
 import Comments from './Comments';
 import Notification from './Notification';
-{/* import CompareUsers from './CompareUsers.js' */}
 import LogoutBtn from './LogoutBtn';
 import store from '../store';
 import IconButton from 'material-ui/IconButton';
