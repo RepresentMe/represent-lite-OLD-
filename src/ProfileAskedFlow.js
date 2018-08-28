@@ -25,20 +25,20 @@ class ProfileAskedFlow extends Component {
       function(response) {
         this.setState({
           questions: response.results,
-          noQuestions: response.results.length == 0
+          noQuestions: response.results.length === 0
         });
         if(this.props.curUserProfile) {
           let answeredCount = response.count-response.unanswered;
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: response.count != 0 ? parseInt((answeredCount / response.count)*100) : 0,
+            percentageCompleted: response.count !== 0 ? parseInt((answeredCount / response.count)*100) : 0,
             questionsCount: response.count,
             answeredCount: answeredCount
           });
         }
       }.bind(this),
       function(err) {
-        if(err.status == 401) {
+        if(err.status === 401) {
           this.props.route.Represent.API.logout(function(){
             window.location.reload();
           })

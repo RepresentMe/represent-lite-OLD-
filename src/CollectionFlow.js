@@ -28,7 +28,7 @@ class CollectionFlow extends Component {
 
         this.setState({
           questions: response.results,
-          noQuestions: response.results.length == 0
+          noQuestions: response.results.length === 0
         });
         if(this.props.curUserProfile) {
           let answeredCount = response.count-response.unanswered;
@@ -41,7 +41,7 @@ class CollectionFlow extends Component {
         }
       }.bind(this),
       function(err) {
-        if(err.status == 401) {
+        if(err.status === 401) {
           this.props.route.Represent.API.logout(function(){
             window.location.reload();
           })
