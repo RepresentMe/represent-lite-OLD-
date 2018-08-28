@@ -4,10 +4,6 @@ import { Link } from 'react-router'
 
 class FlowSignIn extends Component {
 
-  constructor() {
-    super();
-  }
-
   render() {
     return (
     	<div className="hasBg">
