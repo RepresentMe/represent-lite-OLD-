@@ -18,7 +18,7 @@ class QuestionResultsBars extends Component {
 
     var barsData = [];
     if(this.state.isMCQ) {
-      question.choices.map(function(choice) {
+      question.choices.forEach(function(choice) {
         barsData.push({
           title: choice.text,
           percentageAnswered: parseInt((choice.liquid_vote_count/question.liquid_vote_count)*100, 10),

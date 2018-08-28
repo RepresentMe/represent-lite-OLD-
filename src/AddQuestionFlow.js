@@ -131,7 +131,7 @@ class AddQuestionFlow extends Component {
     });
 
     let tags = [];
-    this.state.tags.map(function(tag) {
+    this.state.tags.forEach(function(tag) {
       tags.push({tag: {id:tag.id}});
     });
 
