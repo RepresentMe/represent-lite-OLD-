@@ -70,7 +70,7 @@ class Comment extends Component {
         <div>
           <div className="commentLabels">
             <div className="photo">
-              <img src={this.props.commentObj.user.photo} onError={function(e) {e.target.src = ProfilePlaceholder}} />
+              <img src={this.props.commentObj.user.photo} alt="user profile" onError={function(e) {e.target.src = ProfilePlaceholder}} />
             </div>
             <div className="Label attachedLeft">{this.state.comment.user.first_name} {this.state.comment.user.last_name}</div>
             {vote ? <div className="Label minimal">{vote}</div> : <div className="Label minimal">Private</div>}
