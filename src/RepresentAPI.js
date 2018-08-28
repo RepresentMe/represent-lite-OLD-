@@ -136,7 +136,7 @@ class RepresentAPI {
       if(callback) {
         callback();
       }
-    }.bind(this));
+    });
   }
 
   findGetParameter(parameterName) {

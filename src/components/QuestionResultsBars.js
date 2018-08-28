@@ -25,7 +25,7 @@ class QuestionResultsBars extends Component {
           isCurUserAnswered: checkCurUserVote && question.my_vote[0].object_id === choice.id,
           color: '#C6C7CA'
         })
-      }.bind(this))
+      })
     } else {
       barsData.push({
         title: 'Strongly disagree',
@@ -73,7 +73,7 @@ class QuestionResultsBars extends Component {
               <LinearProgress mode="determinate" color={barData.color} value={barData.percentageAnswered} />
             </div>
           )
-        }.bind(this))}
+        })}
       </div>
     )
   }
