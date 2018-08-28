@@ -83,7 +83,7 @@ class CollectionFlow extends Component {
 
   onVoteChange(id, newvote) {
     let questions = this.state.questions;
-    for( var i = 0, len = questions.length; i < len; i++ ) {
+    for( let i = 0, len = questions.length; i < len; i++ ) {
         if( questions[i]['id'] === id) {
 
           this.props.route.Represent.API.GETRequest('/api/questions/', {id: id}, function(response) {
