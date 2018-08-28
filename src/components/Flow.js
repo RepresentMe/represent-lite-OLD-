@@ -302,7 +302,12 @@ class Flow extends Component {
         if(!q.my_vote || q.my_vote.length === 0) {
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: this.props.currentFlowState.questionsCount !== 0 ? parseInt(((this.props.currentFlowState.answeredCount+1) / this.props.currentFlowState.questionsCount)*100) : 0,
+            percentageCompleted: this.props.currentFlowState.questionsCount !== 0
+              ? parseInt(
+                ((this.props.currentFlowState.answeredCount+1) /
+                  this.props.currentFlowState.questionsCount)
+                  *100, 10)
+              : 0,
             answeredCount: this.props.currentFlowState.answeredCount+1,
             questionsCount: this.props.currentFlowState.questionsCount
           })

@@ -20,7 +20,12 @@ class ProfileAnsweredFlow extends Component {
 
     // Request for the questions
 
-    this.props.route.Represent.API.GETRequest('/api/next_question/', {answered_by: parseInt(this.props.params.profileid, 10), limit_count: 100},
+    this.props.route.Represent.API.GETRequest(
+      '/api/next_question/',
+      {
+        answered_by: parseInt(this.props.params.profileid, 10),
+        limit_count: 100
+      },
 
       function(response) {
         this.setState({
@@ -31,7 +36,9 @@ class ProfileAnsweredFlow extends Component {
           let answeredCount = response.count-response.unanswered;
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: response.count !== 0 ? parseInt((answeredCount / response.count)*100) : 0,
+            percentageCompleted: response.count !== 0
+              ? parseInt((answeredCount / response.count)*100, 10)
+              : 0,
             questionsCount: response.count,
             answeredCount: answeredCount
           });

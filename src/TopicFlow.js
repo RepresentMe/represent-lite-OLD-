@@ -26,9 +26,14 @@ class TopicFlow extends Component {
 
     // Request for the questions
 
-    this.props.route.Represent.API.GETRequest('/api/next_question/', {tags__tag: parseInt(this.props.params.topicid, 10), limit_count: 100}, 
-      function(response) {
+    this.props.route.Represent.API.GETRequest(
+      '/api/next_question/',
+      {
+        tags__tag: parseInt(this.props.params.topicid, 10),
+        limit_count: 100
+      },
 
+      function(response) {
         this.setState({
           questions: response.results,
           noQuestions: response.results.length === 0
@@ -37,7 +42,9 @@ class TopicFlow extends Component {
           let answeredCount = response.count-response.unanswered;
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: response.count !== 0 ? parseInt((answeredCount / response.count)*100) : 0,
+            percentageCompleted: response.count !== 0
+              ? parseInt((answeredCount / response.count)*100, 10)
+              : 0,
             questionsCount: response.count,
             answeredCount: answeredCount
           });
