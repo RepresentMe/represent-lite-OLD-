@@ -111,14 +111,6 @@ class FacebookLogin extends React.Component {
       onClick();
     }
 
-    let isMobile = false;
-
-    try {
-      isMobile = ((window.navigator && window.navigator.standalone) || navigator.userAgent.match('CriOS') || navigator.userAgent.match(/mobile/i));
-    } catch (ex) {
-      // continue regardless of error
-    }
-
     const params = {
       client_id: appId,
       redirect_uri: window.location.href,
@@ -130,11 +122,7 @@ class FacebookLogin extends React.Component {
       params.auth_type = 'reauthenticate';
     }
 
-    // if (mobileOrForce) {
-    //   top.location.href = `//www.facebook.com/dialog/oauth?${this.objectToParams(params)}`;
-    // } else {
-      window.FB.login(this.checkLoginState, { scope, auth_type: params.auth_type });
-    // }
+    window.FB.login(this.checkLoginState, { scope, auth_type: params.auth_type });
   };
 
   render() {
