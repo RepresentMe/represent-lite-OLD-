@@ -8,7 +8,6 @@ import {Element, scroller} from 'react-scroll';
 import LoadingScreen from './LoadingScreen';
 import Comments from './Comments';
 import Notification from './Notification';
-{/* import CompareUsers from './CompareUsers.js' */}
 import LogoutBtn from './LogoutBtn';
 import store from '../store';
 import IconButton from 'material-ui/IconButton';
@@ -50,15 +49,15 @@ class Flow extends Component {
         loading: false,
         noMoreQuestions: true
       })
-    } else if(this.props.questions.length != nextProps.questions.length && nextProps.questions.length > this.state.allQuestions.length) {
+    } else if(this.props.questions.length !== nextProps.questions.length && nextProps.questions.length > this.state.allQuestions.length) {
       this.setState(function(curState) {
         return {
           loading: false,
           allQuestions: nextProps.questions,
-          showingQuestions: curState.showingQuestions.length == 0 ? [nextProps.questions[0]] : curState.showingQuestions
+          showingQuestions: curState.showingQuestions.length === 0 ? [nextProps.questions[0]] : curState.showingQuestions
         }
       }, function() {
-        if(this.state.showingQuestions.length == 1) {
+        if(this.state.showingQuestions.length === 1) {
           scroller.scrollTo('question-0', {
             duration: 0,
             delay: 0,
@@ -140,7 +139,7 @@ class Flow extends Component {
 
           <button  className="clearfix m-y" onClick={() => window.open("http://represent.me" + window.location.pathname)}>View the results at represent.me</button>
 
-          {this.props.currentFlowState && this.props.currentFlowState.flowType && this.props.currentFlowState.flowType == 'group' && this.props.curUserProfile && (<a href={'/group/'+this.props.currentFlowState.id+'/ask'} target="_self" className="clearfix">Submit a question</a>)}
+          {this.props.currentFlowState && this.props.currentFlowState.flowType && this.props.currentFlowState.flowType === 'group' && this.props.curUserProfile && (<a href={'/group/'+this.props.currentFlowState.id+'/ask'} target="_self" className="clearfix">Submit a question</a>)}
   
           {/* 
           {this.props.curUserProfile && <CompareUsers userAId={this.props.curUserProfile.id} API={this.props.Represent.API}/>}
@@ -170,7 +169,7 @@ class Flow extends Component {
           <div className="FooterRight">
 
 
-            {this.props.currentFlowState && this.props.currentFlowState.flowType && this.props.currentFlowState.flowType == 'group' && this.props.curUserProfile && (
+            {this.props.currentFlowState && this.props.currentFlowState.flowType && this.props.currentFlowState.flowType === 'group' && this.props.curUserProfile && (
 
               <IconButton tooltip="skip" target="_self" href={'/group/'+this.props.currentFlowState.id+'/ask'}>
                 <AddButton />
@@ -216,7 +215,7 @@ class Flow extends Component {
   }
 
   handleWaypointEnter(index) {
-    if(this.state.focus != index) {
+    if(this.state.focus !== index) {
       this.setState({
         focus: index
       });
@@ -234,7 +233,7 @@ class Flow extends Component {
 
   scrollToNextQuestion() {
     let nextIndex = this.state.focus + 1;
-    if(nextIndex == this.state.showingQuestions.length) {
+    if(nextIndex === this.state.showingQuestions.length) {
       this.setState({
         showingQuestions: this.state.showingQuestions.concat(this.state.allQuestions[nextIndex] ? [this.state.allQuestions[nextIndex]] : [])
       }, function () {
@@ -296,13 +295,18 @@ class Flow extends Component {
 
     for (var i = 0; i < this.state.allQuestions.length; i++) {
       var q = this.state.allQuestions[i];
-      if(q.id == id) {
+      if(q.id === id) {
 
 
-        if(!q.my_vote || q.my_vote.length == 0) {
+        if(!q.my_vote || q.my_vote.length === 0) {
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: this.props.currentFlowState.questionsCount != 0 ? parseInt(((this.props.currentFlowState.answeredCount+1) / this.props.currentFlowState.questionsCount)*100) : 0,
+            percentageCompleted: this.props.currentFlowState.questionsCount !== 0
+              ? parseInt(
+                ((this.props.currentFlowState.answeredCount+1) /
+                  this.props.currentFlowState.questionsCount)
+                  *100, 10)
+              : 0,
             answeredCount: this.props.currentFlowState.answeredCount+1,
             questionsCount: this.props.currentFlowState.questionsCount
           })

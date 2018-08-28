@@ -18,43 +18,43 @@ class QuestionResultsBars extends Component {
 
     var barsData = [];
     if(this.state.isMCQ) {
-      question.choices.map(function(choice) {
+      question.choices.forEach(function(choice) {
         barsData.push({
           title: choice.text,
-          percentageAnswered: parseInt((choice.liquid_vote_count/question.liquid_vote_count)*100),
-          isCurUserAnswered: checkCurUserVote && question.my_vote[0].object_id == choice.id,
+          percentageAnswered: parseInt((choice.liquid_vote_count/question.liquid_vote_count)*100, 10),
+          isCurUserAnswered: checkCurUserVote && question.my_vote[0].object_id === choice.id,
           color: '#C6C7CA'
         })
-      }.bind(this))
+      })
     } else {
       barsData.push({
         title: 'Strongly disagree',
-        percentageAnswered: parseInt((question.liquid_minimum/question.liquid_vote_count)*100),
-        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value == 1,
+        percentageAnswered: parseInt((question.liquid_minimum/question.liquid_vote_count)*100, 10),
+        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value === 1,
         color: '#F43829'
       });
       barsData.push({
         title: 'Disagree',
-        percentageAnswered: parseInt((question.liquid_low/question.liquid_vote_count)*100),
-        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value == 2,
+        percentageAnswered: parseInt((question.liquid_low/question.liquid_vote_count)*100, 10),
+        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value === 2,
         color: '#F98375'
       });
       barsData.push({
         title: 'Neutral',
-        percentageAnswered: parseInt((question.liquid_medium/question.liquid_vote_count)*100),
-        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value == 3,
+        percentageAnswered: parseInt((question.liquid_medium/question.liquid_vote_count)*100, 10),
+        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value === 3,
         color: '#C6C7CA'
       });
       barsData.push({
         title: 'Agree',
-        percentageAnswered: parseInt((question.liquid_high/question.liquid_vote_count)*100),
-        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value == 4,
+        percentageAnswered: parseInt((question.liquid_high/question.liquid_vote_count)*100, 10),
+        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value === 4,
         color: '#85CA66'
       });
       barsData.push({
         title: 'Strongly agree',
-        percentageAnswered: parseInt((question.liquid_maximum/question.liquid_vote_count)*100),
-        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value == 5,
+        percentageAnswered: parseInt((question.liquid_maximum/question.liquid_vote_count)*100, 10),
+        isCurUserAnswered: checkCurUserVote && question.my_vote[0].value === 5,
         color: '#4AB246'
       })
     }
@@ -73,7 +73,7 @@ class QuestionResultsBars extends Component {
               <LinearProgress mode="determinate" color={barData.color} value={barData.percentageAnswered} />
             </div>
           )
-        }.bind(this))}
+        })}
       </div>
     )
   }

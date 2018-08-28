@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import LikertButton from './LikertButton';
+//import LikertButton from './LikertButton';
 import CommentVote from './CommentVote';
 import './styles/LikertButtons.css';
 import ProfilePlaceholder from './images/profile_placeholder.png';
-import IconReply from './images/icon-reply.png';
+//import IconReply from './images/icon-reply.png';
 
 class Comment extends Component {
   constructor(props) {
@@ -33,10 +33,12 @@ class Comment extends Component {
       case 'suggestion':
         subtypeColour = colour.solution;
         break;
+      default:
+        throw new Error("unrecognised comment subtype " +
+                        this.props.commentObj.subtype);
     }
 
     let vote = null;
-    let voteColour = null;
 
     if(this.props.commentObj.vote.length > 0) {
       switch(this.props.commentObj.vote[0].value) {
@@ -55,6 +57,9 @@ class Comment extends Component {
         case 5:
           vote = 'Strongly Agree';
           break;
+      default:
+        throw new Error("unrecognised comment vote " +
+                        this.props.commentObj.vote[0].value);
       }
     }
 
@@ -65,7 +70,7 @@ class Comment extends Component {
         <div>
           <div className="commentLabels">
             <div className="photo">
-              <img src={this.props.commentObj.user.photo} onError={function(e) {e.target.src = ProfilePlaceholder}} />
+              <img src={this.props.commentObj.user.photo} alt="user profile" onError={function(e) {e.target.src = ProfilePlaceholder}} />
             </div>
             <div className="Label attachedLeft">{this.state.comment.user.first_name} {this.state.comment.user.last_name}</div>
             {vote ? <div className="Label minimal">{vote}</div> : <div className="Label minimal">Private</div>}

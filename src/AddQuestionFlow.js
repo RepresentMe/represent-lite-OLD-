@@ -49,7 +49,7 @@ class AddQuestionFlow extends Component {
 
         {this.state.showNotificationBlock && (<Notification button="Yes" didClose={this.saveQuestion}>
           <p>Are you sure you'd like to submit this?</p>
-          <p style="font-weight: bold;">{this.state.questionTitle}</p>
+          <p style={{fontWeight: 'bold'}}>{this.state.questionTitle}</p>
         </Notification>)}
 
         <div><Element name='askCard' />
@@ -131,7 +131,7 @@ class AddQuestionFlow extends Component {
     });
 
     let tags = [];
-    this.state.tags.map(function(tag) {
+    this.state.tags.forEach(function(tag) {
       tags.push({tag: {id:tag.id}});
     });
 

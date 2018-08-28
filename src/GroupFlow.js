@@ -33,21 +33,22 @@ class GroupFlow extends Component {
         this.setState(function(curState) {
           return {
             questions: response.results,
-            noQuestions: response.unanswered == 0
+            noQuestions: response.unanswered === 0
           }
         });
         if(this.props.curUserProfile) {
           let answeredCount = response.count-response.unanswered;
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: response.count != 0 ? parseInt((answeredCount / response.count)*100) : 0,
+            percentageCompleted: response.count !== 0
+              ? parseInt((answeredCount / response.count)*100, 10) : 0,
             questionsCount: response.count,
             answeredCount: answeredCount
           });
         }
       }.bind(this),
       function(err) {
-        if(err.status == 401) {
+        if(err.status === 401) {
           this.props.route.Represent.API.logout(function(){
             window.location.reload();
           })
@@ -113,12 +114,12 @@ class GroupFlow extends Component {
         this.setState(function(curState) {
           return {
             questions: curState.questions.concat(response.results),
-            noQuestions: response.length == 0
+            noQuestions: response.length === 0
           }
         });
       }.bind(this),
       function(err) {
-        if(err.status == 401) {
+        if(err.status === 401) {
           this.props.route.Represent.API.logout(function(){
             window.location.reload();
           })
@@ -145,7 +146,7 @@ class GroupFlow extends Component {
 
   onVoteChange(id, newvote) {
     let questions = this.state.questions;
-    for( var i = 0, len = questions.length; i < len; i++ ) {
+    for( let i = 0, len = questions.length; i < len; i++ ) {
         if( questions[i]['id'] === id) {
 
           this.props.route.Represent.API.GETRequest('/api/questions/', {id: id}, function(response) {

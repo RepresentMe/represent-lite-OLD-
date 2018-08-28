@@ -26,25 +26,32 @@ class TopicFlow extends Component {
 
     // Request for the questions
 
-    this.props.route.Represent.API.GETRequest('/api/next_question/', {tags__tag: parseInt(this.props.params.topicid, 10), limit_count: 100}, 
-      function(response) {
+    this.props.route.Represent.API.GETRequest(
+      '/api/next_question/',
+      {
+        tags__tag: parseInt(this.props.params.topicid, 10),
+        limit_count: 100
+      },
 
+      function(response) {
         this.setState({
           questions: response.results,
-          noQuestions: response.results.length == 0
+          noQuestions: response.results.length === 0
         });
         if(this.props.curUserProfile) {
           let answeredCount = response.count-response.unanswered;
           store.dispatch({
             type: 'setPercentageCompletedInCurrentFlow',
-            percentageCompleted: response.count != 0 ? parseInt((answeredCount / response.count)*100) : 0,
+            percentageCompleted: response.count !== 0
+              ? parseInt((answeredCount / response.count)*100, 10)
+              : 0,
             questionsCount: response.count,
             answeredCount: answeredCount
           });
         }
       }.bind(this),
       function(err) {
-        if(err.status == 401) {
+        if(err.status === 401) {
           this.props.route.Represent.API.logout(function(){
             window.location.reload();
           })
@@ -119,7 +126,7 @@ class TopicFlow extends Component {
 
   onVoteChange(id, newvote) {
     let questions = this.state.questions;
-    for( var i = 0, len = questions.length; i < len; i++ ) {
+    for( let i = 0, len = questions.length; i < len; i++ ) {
         if( questions[i]['id'] === id) {
 
           this.props.route.Represent.API.GETRequest('/api/questions/', {id: id}, function(response) {

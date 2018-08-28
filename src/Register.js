@@ -213,7 +213,7 @@ class Register extends Component {
 
   checkUsername(e) {
     let username = e.target.value;
-    if(username.indexOf(' ') != -1) {
+    if(username.indexOf(' ') !== -1) {
       this.setError({
         username: 'Username can not contain spaces'
       });
@@ -239,7 +239,7 @@ class Register extends Component {
       email: email
     };
     let atIndex = email.indexOf('@');
-    valueObj['username'] = email.substr(0, atIndex == -1 ? email.length : atIndex);
+    valueObj['username'] = email.substr(0, atIndex === -1 ? email.length : atIndex);
 
     this.setValue(valueObj)
   }
